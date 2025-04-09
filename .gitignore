@@ -11,3 +11,6 @@ __pycache__/
 .env
 .env.staging
 .env.production
+
+# Files
+**/input_data/*.json
