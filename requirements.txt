@@ -1,0 +1,5 @@
+python-dotenv==1.0.1
+pytz==2024.2
+psycopg2-binary==2.9.10
+rasterio==1.4.3
+numpy==2.2.2

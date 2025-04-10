@@ -38,7 +38,7 @@ Em seguida, instale o `pip` e o `virtualenv`:
 
 Agora, crie e ative um ambiente virtual e em seguida instale as dependências do projeto:
   ```sh
-  virtualenv .venv --prompt='dataforest'
+  virtualenv .venv --prompt='etl-dataforest'
   source .venv/bin/activate
   pip install -r requirements.txt
   ```
@@ -51,6 +51,13 @@ Crie uma cópia do arquivo `.env.example`:
 Abra o arquivo `.env` e edite os valores conforme necessário para o seu ambiente.
 
 Certifique-se de não commitar o arquivo `.env`, pois ele pode conter informações sensíveis, como credenciais de banco de dados ou chaves de API.
+
+Crie uma cópia do arquivo `/input_data/files.json.example`:
+   ```sh
+   cp /input_data/files.json.example /input_data/files.json
+   ```
+
+Não se esqueça de editar o arquivo `/input_data/files.json` com os caminhos corretos para os arquivos `.asc` ou `.shp` que você deseja processar, assim como seus metadados.
 
 
 ## Configuração do Banco de Dados
@@ -69,7 +76,7 @@ No prompt do PostgreSQL, execute:
 CREATE USER dataforest WITH ENCRYPTED PASSWORD 'dataforest';
 
 -- Criar o banco de dados e definir o usuário como proprietário
-CREATE DATABASE dataforest OWNER dataforest;
+CREATE DATABASE reflorestamento OWNER dataforest;
 
 -- Saia do PostgreSQL
 \q
@@ -100,30 +107,12 @@ SELECT postgis_full_version();
 \q
 ```
 
-
-## Atualizando o banco de dados
-
-```sh
-alembic upgrade head
-```
-
-
-## Criando uma nova migração
-
-Apenas crie ou altere modelos e use o seguinte comando para criar uma nova migration:
-  ```sh
-  alembic revision --autogenerate
-  ```
-
-
-## Executando a Aplicação
+## Execução do ETL
+Para executar o ETL, estando na raiz do projeto, utilize o seguinte comando após configurar suas variáveis de ambiente e os arquivos de entrada:
 
 ```sh
-flask run
+  python -m etl-dataforest.main
 ```
-
-O servidor estará rodando em `http://127.0.0.1:5000/` com recarga automática ao modificar o código.
-
 
 ## Comandos Adicionais
 
