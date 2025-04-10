@@ -40,8 +40,8 @@ CONN = psycopg2.connect(
 )
 CURSOR = CONN.cursor()
 
-with open("etl-dataforest/input_data/asc_files.json", "r") as file:
-    ASC_FILES = json.load(file)
+with open("etl-dataforest/input_data/files.json", "r") as file:
+    FILES = json.load(file)
 
 def main():
     sao_paulo_tz = pytz.timezone("America/Sao_Paulo")
@@ -91,7 +91,7 @@ def main():
                 ASC_SAMPLING_STRIDE,
                 BATCH_SIZE,
                 SRID
-            ): key for key, value in ASC_FILES.items()
+            ): key for key, value in FILES.items()
         }
         for future in futures:
             future.result()
