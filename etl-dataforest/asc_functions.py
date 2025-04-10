@@ -4,6 +4,8 @@ import numpy as np
 import json
 from psycopg2.extras import execute_batch
 from .verify_point_locale import is_point_in_polygon
+from concurrent.futures import ThreadPoolExecutor
+
 
 def read_raster_in_blocks(file_path):
     """
@@ -118,7 +120,6 @@ def process_chunk(
             print(f"Erro ao inserir final no PostGIS: {e}")
             conn.rollback()
 
-from concurrent.futures import ThreadPoolExecutor
 def process_raster_in_chunks(
         name,
         raster_path,

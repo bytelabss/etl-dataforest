@@ -7,8 +7,8 @@ import pytz
 import psycopg2
 from .verify_postgres_conection import is_postgis_enabled
 from .create_table import create_table, create_index, create_jsonb_merge_function
-from .asc_functions import process_raster_in_chunks
 from .send_shp_files_to_postgis import send_shp_files_to_postgis
+from .verify_file_type import verify_file_type
 
 
 # === Carrega variáveis de ambiente ===
@@ -80,21 +80,18 @@ def main():
     with ThreadPoolExecutor(max_workers=4) as executor:
         futures = {
             executor.submit(
-                process_raster_in_chunks,
-                name,
-                raster["path"],
-                raster["escala"],
-                raster["medida"],
-                ASC_TABLE_NAME,
-                SHP_TABLE_NAME,
-                execution_date,
+                verify_file_type,
+                key,
+                value,
                 CONN,
                 CURSOR,
+                execution_date,
+                ASC_TABLE_NAME,
+                SHP_TABLE_NAME,
                 ASC_SAMPLING_STRIDE,
                 BATCH_SIZE,
                 SRID
-            ): name
-            for name, raster in ASC_FILES.items()
+            ): key for key, value in ASC_FILES.items()
         }
         for future in futures:
             future.result()
