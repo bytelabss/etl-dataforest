@@ -1,0 +1,37 @@
+{
+    "precipitacao": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/WordClim_BR_LLwgs84/bio12_br.asc",
+        "escala": 1,
+        "medida": "mm"
+    },
+    "temperatura": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/WordClim_BR_LLwgs84/bio1_br.asc",
+        "escala": 0.1,
+        "medida": "°C"
+    },
+    "declividade": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/SRTM_BR_LLwgs84/declividade_br.asc",
+        "escala": 1,
+        "medida": "graus"
+    },
+    "exposicao": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/SRTM_BR_LLwgs84/exposicao_br.asc",
+        "escala": 1,
+        "medida": "graus"
+    },
+    "distancia_vertical_drenagem": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/HAND_BR_LLwgs84/hand50_br.asc",
+        "escala": 1,
+        "medida": "metros"
+    },
+    "densidade_drenagem": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/density3_br_LLwgs84/density3_br.asc",
+        "escala": 1,
+        "medida": "km/km²"
+    },
+    "cobertura_arborea": {
+        "path": "/home/larissa/Downloads/BR_all_LLwgs84/sa2001tree_br_LLwgs84/sa2001tree_br.asc",
+        "escala": 1,
+        "medida": "percentual"
+    }
+}
